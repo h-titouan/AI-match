@@ -17,8 +17,12 @@ df = df.reset_index(drop=True)
 del df["match"]
 df.columns = ['diff_age','match']
 
+<<<<<<< HEAD
 print("Hello world !")
 print("LOl")
+=======
+print("Hello world ...")
+>>>>>>> 00c0ca1ee2431c91204a4e29eeed82dc5fda4f8a
 
 #Creation du Barplot
 fig = px.bar(df, x="diff_age", y="match", color="diff_age", barmode="group")
