@@ -18,6 +18,7 @@ del df["match"]
 df.columns = ['diff_age','match']
 
 print("Hello world !")
+print("LOl")
 
 #Creation du Barplot
 fig = px.bar(df, x="diff_age", y="match", color="diff_age", barmode="group")
