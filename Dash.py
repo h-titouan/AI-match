@@ -3,12 +3,12 @@
 from dash import Dash, html, dcc
 import plotly.express as px
 import pandas as pd
-from Chart_data import match_diff_age
+from Chart_data import m_ad
 app = Dash(__name__)
 
 #rearrangement du dataframe pour le plot
 
-df = match_diff_age()
+df = m_ad
 
 #Creation du Barplot
 fig = px.bar(df, x="diff_age", y="Taux_match", color="diff_age", barmode="relative")
