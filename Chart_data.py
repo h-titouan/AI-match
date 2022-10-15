@@ -30,5 +30,7 @@ m_ad.drop(m_ad.tail(11).index,inplace = True)
 m_ad = pd.concat([m_ad,c10], ignore_index=True)
 m_ad["Taux_match"]= m_ad.match/m_ad.unmatch
 
-#Création du csv à partire du dataframe
-m_ad.to_csv('NbMatch_Unmatch.csv')
+
+#Création d'une fonction pour importer le df sur le main
+def match_diff_age(df = m_ad):
+    return df
