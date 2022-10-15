@@ -8,21 +8,11 @@ app = Dash(__name__)
 
 #rearrangement du dataframe pour le plot
 
-df = pd.read_csv("data.csv")
-df.diff_age = round(df.diff_age)
-df = df.loc[df["match"]==1.0,["diff_age","match"]]
-df['Counts'] = df.groupby(['diff_age'])['match'].transform('count')
-df= df.drop_duplicates()
-df = df.reset_index(drop=True)
-del df["match"]
-df.columns = ['diff_age','match']
-
-print("Hello world ...")
-print("LOl")
-
+df = pd.read_csv("NbMatch_Unmatch.csv")
 
 #Creation du Barplot
-fig = px.bar(df, x="diff_age", y="match", color="diff_age", barmode="group")
+fig = px.bar(df, x="diff_age", y="Taux_match", color="diff_age", barmode="relative")
+fig.update_layout(showlegend=False)
 
 #Mise en place du html
 app.layout = html.Div(children=[
@@ -35,8 +25,13 @@ app.layout = html.Div(children=[
     dcc.Graph(
         id='example-graph',
         figure=fig
+    ),
+
+    dcc.Graph(
+        id='example-graph2',
+        figure=fig
     )
-])
+], style={'width': '45%', 'display': 'inline-block', 'vertical-align': 'middle'})
 
 if __name__ == '__main__':
     app.run_server(debug=True)
