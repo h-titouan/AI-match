@@ -2,6 +2,7 @@
 # Importer les librairies
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 from sklearn.neighbors import KNeighborsClassifier
@@ -30,7 +31,7 @@ def preprocessing(data):
     print(y.value_counts(normalize=True))
     return X, y
 
-X_train, y_train = prepocessing(X_train)
+X_train, y_train = preprocessing(X_train)
 
 # Définition de l'instance SMOTE
 sm = SMOTE(k_neighbors=3, sampling_strategy=0.80)
@@ -68,14 +69,11 @@ def evaluation(model):
     plt.plot(N, val_score.mean(axis=1), label="validation score")
     plt.legend()
 
-evaluation(KNN)
-
-y_pred = model_final(KNN, X_test)
+evaluation(knn)
 
 # Ouvrir les données submission
 submission = pd.read_csv("submissions.csv", sep = ";", on_bad_lines='skip')
 iid_pid = submission.iid_pid
-
 
 def submission_process(data):
     data = data.replace(",", ".", regex=True)
@@ -139,7 +137,7 @@ model_var = ["int_corr", "diff_age", "diff_date", "diff_go_out", "sinc_o", "attr
            "diff_intel", "diff_sinc", "diff_shar", "diff_amb", "diff_attr", "diff_fun", "intel_o"]
 
 submission = submission[model_var]
-pred = KNN.predict(submission)
+pred = knn.predict(submission)
 dict = {"iid_pid" : iid_pid, "target" : pred}
 prediction = pd.DataFrame(dict)
 
