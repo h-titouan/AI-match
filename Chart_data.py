@@ -1,6 +1,7 @@
 import pandas as pd
+from Nettoyage_donnees import model_ready
 
-data = pd.read_csv("data.csv")
+data = model_ready
 
 data.diff_age = round(data.diff_age)
 

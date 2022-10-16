@@ -83,6 +83,5 @@ match = ["match"]
 model_var = ["int_corr", "diff_age", "diff_date", "diff_go_out", "sinc_o", "attr_o", "fun_o",
            "diff_intel", "diff_sinc", "diff_shar", "diff_amb", "diff_attr", "diff_fun", "intel_o"]
 
+#Dataframe nettoyé
 model_ready = data[model_var + match]
-
-model_ready.to_csv("model_ready.csv", index=False, header=True)

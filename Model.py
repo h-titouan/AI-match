@@ -7,9 +7,10 @@ from imblearn.over_sampling import SMOTE
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import f1_score, confusion_matrix, classification_report
 from sklearn.model_selection import learning_curve
+from Nettoyage_donnees import model_ready
 
 # Ouvrir les données
-data = pd.read_csv("model_ready.csv", sep = ";")
+data = model_ready
 
 # Splitter avec X_train, X_test
 X_train, X_test = train_test_split(data, test_size=0.20, random_state=0)
