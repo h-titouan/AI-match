@@ -6,7 +6,6 @@ import pandas as pd
 from Nettoyage_donnees import model_ready
 from dash.dependencies import Input, Output
 import Dash_functions as dashF
-import seaborn as sns
 
 app = Dash(__name__)
 
@@ -15,8 +14,8 @@ data = model_ready
 colonnes = list(data.columns)
 
 # Emplacement des images
-EasyDate = 'C:/Users/houde/PycharmProjects/pythonProject2/Easy Date/EasyDate.png'
-AI_match = 'C:/Users/houde/PycharmProjects/pythonProject2/Easy Date/AI_match.png'
+EasyDate = 'EasyDate.png'
+AI_match = 'AI_match.png'
 
 #Mise en place du html
 # ------------------------------------------------------------------------------
