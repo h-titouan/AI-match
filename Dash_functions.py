@@ -1,6 +1,8 @@
 import base64
-from Nettoyage_donnees import model_ready
+from Nettoyage_donnees import model_ready, dataG
 import pandas as pd
+import plotly.graph_objects as go
+import plotly.express as px
 
 # Afficher les images
 def b64_image(image_filename):
@@ -34,3 +36,27 @@ def interactive_bar(column):
     df = m_ad
 
     return df
+
+
+def radar_fig(colonnes):
+
+    categories = list(colonnes)
+    first = list(dataG[colonnes].iloc[0])
+    second = list(dataG[colonnes].iloc[1])
+
+    radar = go.Figure()
+
+    radar.add_trace(go.Scatterpolar(
+        r=first,
+        theta=categories,
+        name='Match'
+    ))
+
+    radar.add_trace(go.Scatterpolar(
+        r=second,
+        theta=categories,
+        name='No Match'
+    ))
+
+    return radar
+
