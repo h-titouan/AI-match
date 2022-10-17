@@ -16,8 +16,8 @@ dataG = dataG
 colonnes = list(dataG.columns)
 
 # Emplacement des images
-EasyDate = 'EasyDate.png'
-AI_match = 'AI_match.png'
+EasyDate = 'C:/Users/houde/PycharmProjects/pythonProject2/Easy Date/EasyDate.png'
+AI_match = 'C:/Users/houde/PycharmProjects/pythonProject2/Easy Date/AI_match.png'
 
 #Mise en place du html
 # ------------------------------------------------------------------------------
@@ -28,8 +28,6 @@ app.layout = html.Div([
     html.Img(src=dashF.b64_image(AI_match),style={'width':"10%"}),
 
 html.Div([
-
-        html.Br(),
 
         html.Label(['Choisissez une variable :'],
         style={'font-weight': 'bold', "text-align": "center"}),
@@ -43,23 +41,24 @@ html.Div([
             style={'width':"30%"},             #use dictionary to define CSS styles of your dropdown
 
             ),
-    ],className='three columns'),
+    ]),
 
     # Barplot
     html.Div([
         dcc.Graph(id='barplot')], style = {"width" : '70%'}),
 
-
     # Radar
     html.Div([
 
-        # Checklit du radar
-        dcc.Checklist(id = "checklist",
+        # Checklist du radar
+        dcc.Checklist(id = "checklist", className="radar",
                 options=colonnes,
-                value=colonnes
-        ),
+                value=colonnes,
+                labelStyle={'display': 'block'},
+                style={'float': 'right','margin': 'auto'}
+                      ),
         # Graphique du radar
-        dcc.Graph(id='radar')], style={"width": '70%'})
+        dcc.Graph(id='radar', className="radar",  style={'float': 'left','margin': 'auto'})], style ={"width" : "60%"})
 
 ])
 
@@ -67,8 +66,8 @@ html.Div([
 # Connecting the Dropdown values to the graph
 @app.callback(
     Output(component_id='barplot', component_property='figure'),
-    [Input(component_id='select_cols', component_property='value'),
-     ])
+    Input(component_id='select_cols', component_property='value')
+    )
 
 def build_bar(column_chosen):
     df = dashF.interactive_bar(column_chosen)
@@ -77,8 +76,8 @@ def build_bar(column_chosen):
 
 @app.callback(
     Output(component_id='radar', component_property='figure'),
-    [Input(component_id='checklist', component_property='value')
-     ])
+    Input(component_id='checklist', component_property='value')
+     )
 
 def build_radar(cols):
     radar = dashF.radar_fig(cols)
