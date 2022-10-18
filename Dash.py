@@ -14,7 +14,9 @@ app = Dash(__name__)
 # Usefull datasets
 data = model_ready
 dataG = dataG
-colonnes = list(dataG.columns)
+radar_cols = list(dataG.columns)
+bar_cols = list(data.columns)
+
 
 # Image directory
 EasyDate = 'Images/EasyDate.png'
@@ -41,16 +43,20 @@ app.layout = html.Div([
         style={'font-weight': 'bold', "text-align": "center"}),
 
         dcc.Dropdown(id='select_cols',
-            options=[{'label': "Coefficient de match", 'value': colonnes[0],
-                      'label': "Sincérité partenaire", 'value': colonnes[1],
-                      'label': "Sincérité partenaire", 'value': colonnes[2],
-
-                      }],
+                     options=[
+                         {'label': "Sincérité partenaire", 'value': bar_cols[0]},
+                         {'label': "Attirance partenaire", 'value': bar_cols[1]},
+                         {'label': "Fun partenaire", 'value': bar_cols[2]},
+                         {'label': "Intelligence partenaire", 'value': bar_cols[3]},
+                         {'label': "Différence d'âge", 'value': bar_cols[4]},
+                         {'label': "Différence date", 'value': bar_cols[5]},
+                         {'label': "Différence sortie", 'value': bar_cols[6]},
+                         {'label': "Coefficient de match", 'value': bar_cols[13]},
+                     ],
             optionHeight=35,
-            value= colonnes[0],               #dropdown value selected automatically when page loads
+            value= bar_cols[0],               #dropdown value selected automatically when page loads
             multi=False,                        #allow multiple dropdown values to be selected
-            style={'width':"30%"},             #use dictionary to define CSS styles of your dropdown
-
+            style={'width':"50%"},                #use dictionary to define CSS styles of your dropdown
             ),
     ]),
 
@@ -63,8 +69,8 @@ app.layout = html.Div([
 
         # Checklist du radar
         dcc.Checklist(id = "checklist", className="radar",
-                options=colonnes,
-                value=colonnes,
+                options = radar_cols,
+                value=radar_cols,
                 labelStyle={'display': 'block'},
                 style={'float': 'right','margin': 'auto'}
                       ),
@@ -96,7 +102,11 @@ app.layout = html.Div([
 # Barplot reactive function
 def build_bar(column_chosen):
     df = dashF.interactive_bar(column_chosen)
+<<<<<<< Updated upstream
     fig = px.bar(df, x=column_chosen, y="Taux_match", color_discrete_sequence= ["#E0115F"], title="Exploration des données explicatives")
+=======
+    fig = px.bar(df, x=column_chosen, y="Taux de match", color_discrete_sequence= ["#E0115F"])
+>>>>>>> Stashed changes
     return fig
 
 # Radar Callback

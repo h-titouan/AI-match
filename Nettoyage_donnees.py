@@ -80,26 +80,28 @@ data = exploratory_process(data)
 match = ["match"]
 
 # Nom des colonnes conservées pour le modèle
-model_var = ["int_corr", "diff_age", "diff_date", "diff_go_out", "sinc_o", "attr_o", "fun_o",
-           "diff_intel", "diff_sinc", "diff_shar", "diff_amb", "diff_attr", "diff_fun", "intel_o"]
+
+model_var = ["sinc_o", "attr_o", "fun_o", "intel_o", "diff_age", "diff_date", "diff_go_out",
+           "diff_intel", "diff_sinc", "diff_shar", "diff_amb", "diff_attr", "diff_fun", "int_corr"]
+
 
 #Dataframe nettoyé
 model_ready = data[model_var + match]
 
-dict = {"int_corr": [0.315267, 0.299630],
-        "sinc_o": [0.847308, 0.650555],
-        "diff_age": [3.178344, 3.799305],
-        "diff_date": [1.661765, 1.601048],
-        "diff_go_out": [0.902752, 1.120491],
-        "attr_o": [0.726390, 0.404404],
-        "diff_intel": [6.794465, 6.774984],
-        "fun_o": [0.555163, 0.246688],
-        "diff_sinc": [6.658629, 7.107700],
-        "diff_shar": [6.802592, 6.642148],
-        "diff_amb": [6.946236, 7.043938],
-        "diff_attr": [13.346743, 12.326343],
-        "diff_fun": [6.391057, 6.217810],
-        "intel_o": [0.667255, 0.452023]
+dict = {"Sincérité partenaire": [0.847308, 0.650555],
+        "Attirance partenaire": [0.726390, 0.404404],
+        "Fun partenaire": [0.555163, 0.246688],
+        "Intelligence partenaire": [0.667255, 0.452023],
+        "Différence d'âge": [3.178344, 3.799305],
+        "Différence date": [1.661765, 1.601048],
+        "Différence sortie": [0.902752, 1.120491],
+        "Différence d'intelligence": [6.794465, 6.774984],
+        "Différence sincérité": [6.658629, 7.107700],
+        "Différence centre intérêts": [6.802592, 6.642148],
+        "Différence ambition": [6.946236, 7.043938],
+        "Différence attirance": [13.346743, 12.326343],
+        "Différence fun": [6.391057, 6.217810],
+        "Coefficient de match": [0.315267, 0.299630]
         }
 
 dataG = pd.DataFrame(dict)
