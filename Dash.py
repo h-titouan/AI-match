@@ -32,7 +32,7 @@ app.layout = html.Div([
     # Create Multipage on App
     dcc.Tabs([
         # Start Page 1
-        dcc.Tab(label='Page 1', children=[
+        dcc.Tab(label='Analyses exploratoires', children=[
 
     # Columns Selector
     html.Div([
@@ -74,7 +74,7 @@ app.layout = html.Div([
         # Close Page 1
         ]),
         # Start Page 2
-        dcc.Tab(label='Page 2', children=[
+        dcc.Tab(label='Analyses du Modèle', children=[
             html.Div([
                 dcc.Graph(id='conf_matrix',figure = dashF.conf_matrix())
             ])
