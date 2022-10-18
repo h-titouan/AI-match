@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#Heroku
+venv
+*.pyc
+.env
+.DS_Store

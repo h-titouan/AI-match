@@ -10,6 +10,7 @@ import Dash_functions as dashF
 import plotly.graph_objects as go
 
 app = Dash(__name__)
+server = app.server
 
 # Usefull datasets
 data = model_ready
