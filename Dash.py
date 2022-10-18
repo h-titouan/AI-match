@@ -53,7 +53,7 @@ app.layout = html.Div([
 
     # Barplot
     html.Div([
-        dcc.Graph(id='barplot')], style = {"width" : '70%'}),
+        dcc.Graph(id='barplot')], style = {"width" : '100%'}),
 
     # Radar
     html.Div([
@@ -66,7 +66,7 @@ app.layout = html.Div([
                 style={'float': 'right','margin': 'auto'}
                       ),
         # Graphique du radar
-        dcc.Graph(id='radar', className="radar",  style={'float': 'left','margin': 'auto'})], style ={"width" : "60%"})
+        dcc.Graph(id='radar', className="radar",  style={'float': 'left','margin': 'auto'})], style ={"width" : "100%"})
 
         # Close Page 1
         ]),
