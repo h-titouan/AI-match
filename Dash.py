@@ -10,6 +10,7 @@ import Dash_functions as dashF
 import plotly.graph_objects as go
 
 app = Dash(__name__)
+
 server = app.server
 
 # Usefull datasets
@@ -17,7 +18,6 @@ data = model_ready
 dataG = dataG
 radar_cols = list(dataG.columns)
 bar_cols = list(data.columns)
-
 
 # Image directory
 EasyDate = 'Images/EasyDate.png'
@@ -55,7 +55,7 @@ app.layout = html.Div([
                          {'label': "Coefficient de match", 'value': bar_cols[13]},
                      ],
             optionHeight=35,
-            value= bar_cols[0],               #dropdown value selected automatically when page loads
+            value= bar_cols[13],               #dropdown value selected automatically when page loads
             multi=False,                        #allow multiple dropdown values to be selected
             style={'width':"50%"},                #use dictionary to define CSS styles of your dropdown
             ),
@@ -65,18 +65,50 @@ app.layout = html.Div([
     html.Div([
         dcc.Graph(id='barplot')], style = {"width" : '100%'}),
 
-    # Radar
-    html.Div([
+            # Pie Select Col Div
+            html.Div([
 
-        # Checklist du radar
-        dcc.Checklist(id = "checklist", className="radar",
-                options = radar_cols,
-                value=radar_cols,
-                labelStyle={'display': 'block'},
-                style={'float': 'right','margin': 'auto'}
-                      ),
-        # Graphique du radar
-        dcc.Graph(id='radar', className="radar",  style={'float': 'left','margin': 'auto'})], style ={"width" : "100%"})
+                html.Label(['Choisissez une colonne :'],
+                           style={'font-weight': 'bold', "text-align": "center"}),
+
+                dcc.Dropdown(id='select_pie_col',
+                             options=[
+                                 {'label': "Sincérité partenaire", 'value': bar_cols[0]},
+                                 {'label': "Attirance partenaire", 'value': bar_cols[1]},
+                                 {'label': "Fun partenaire", 'value': bar_cols[2]},
+                                 {'label': "Intelligence partenaire", 'value': bar_cols[3]},
+                                 {'label': "Différence d'âge", 'value': bar_cols[4]},
+                                 {'label': "Différence date", 'value': bar_cols[5]},
+                                 {'label': "Différence sortie", 'value': bar_cols[6]},
+                             ],
+                             optionHeight=35,
+                             value=bar_cols[0],  # dropdown value selected automatically when page loads
+                             multi=False,  # allow multiple dropdown values to be selected
+                             style={'width': "50%"},  # use dictionary to define CSS styles of your dropdown
+                             ),
+            ]),
+
+            # Pie Div
+            html.Div([
+                dcc.Graph(id='pie'),
+            ], style={"width": '100%'}),
+
+
+            # Add some space
+            html.Div(style={'padding': 20}),
+
+            # Radar
+            html.Div([
+                    # Checklist du radar
+                    dcc.Checklist(id = "checklist", className="radar",
+                                  options=radar_cols,
+                                  value=radar_cols,
+                                  labelStyle={'display': 'block'},
+                                  style={'float': 'right', 'margin': 'auto'}
+                                  ),
+                    # Graph du radar
+                    dcc.Graph(id='radar', className="radar",
+                              style={'float': 'left','margin': 'auto'})], style ={"width" : "100%"}),
 
         # Close Page 1
         ]),
@@ -103,7 +135,7 @@ app.layout = html.Div([
 # Barplot reactive function
 def build_bar(column_chosen):
     df = dashF.interactive_bar(column_chosen)
-    fig = px.bar(df, x=column_chosen, y="Taux_match", color_discrete_sequence= ["#E0115F"], title="Exploration des données explicatives")
+    fig = px.bar(df, x=column_chosen, y="Taux de match", color_discrete_sequence= ["#E0115F"], title="Exploration des données explicatives")
 
     return fig
 
@@ -117,6 +149,18 @@ def build_bar(column_chosen):
 def build_radar(cols):
     radar = dashF.radar_fig(cols)
     return radar
+
+# Pie Callback
+@app.callback(
+    Output(component_id='pie', component_property='figure'),
+    Input(component_id='select_pie_col', component_property='value')
+    )
+
+# Pie reactive function
+def build_pie(column_chosen):
+    df = dashF.interactive_pie(column_chosen)
+    fig = px.pie(df, values='Taux de match', names=column_chosen, title = "Différence de taux de match selon les variables explicatives")
+    return fig
 
 # ------------------------------------------------------------------------------
 if __name__ == '__main__':

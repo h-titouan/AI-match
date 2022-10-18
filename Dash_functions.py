@@ -37,7 +37,7 @@ def interactive_bar(column):
     # Concaténation des différences d'âge plus grandes que 10
 
     m_ad = pd.merge(df_m, df_u, on=column, how="outer").fillna(value=0).reset_index(drop=True)
-    m_ad["Taux_match"] = m_ad.match / (m_ad.match + m_ad.unmatch)
+    m_ad["Taux de match"] = m_ad.match / (m_ad.match + m_ad.unmatch)
     df = m_ad
 
     return df
@@ -50,7 +50,7 @@ def radar_fig(colonnes):
     second = list(dataG[colonnes].iloc[1])
 
     radar = go.Figure(layout=go.Layout(
-        title=go.layout.Title(text="Caractéristques des rencontres")))
+        title=go.layout.Title(text="Caractéristiques des rencontres")))
 
     radar.add_trace(go.Scatterpolar(
         r=first,
@@ -81,3 +81,27 @@ def conf_matrix():
 
 conf_matrix()
 
+def interactive_pie(column):
+
+    df_m = data
+    cols = [column, 'match']
+    df_m = df_m[cols]
+    df_m = df_m.loc[df_m["match"] == 1.0]
+    df_m = df_m.groupby([column]).count()
+    df_m = df_m.reset_index()
+
+    df_u = data
+    cols = [column, 'match']
+    df_u = df_u[cols]
+    df_u = df_u.loc[df_u["match"] == 0.0]
+    df_u = df_u.groupby([column]).count()
+    df_u = df_u.reset_index()
+    df_u.columns = [column, 'unmatch']
+
+    # Concaténation des différences d'âge plus grandes que 10
+
+    m_ad = pd.merge(df_m, df_u, on=column, how="outer").fillna(value=0).reset_index(drop=True)
+    m_ad["Taux de match"] = m_ad.match / (m_ad.match + m_ad.unmatch)
+    df = m_ad
+
+    return df
