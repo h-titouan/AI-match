@@ -75,7 +75,9 @@ app.layout = html.Div([
         ]),
         # Start Page 2
         dcc.Tab(label='Page 2', children=[
-
+            html.Div([
+                dcc.Graph(id='conf_matrix',figure = dashF.conf_matrix())
+            ])
         # Close Page 2
         ])
     # Close Tabs

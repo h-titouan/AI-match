@@ -3,6 +3,9 @@ from Nettoyage_donnees import model_ready, dataG
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
+from sklearn.metrics import confusion_matrix
+import plotly.figure_factory as ff
+from Model import y_pred, y_test
 
 # Afficher les images
 def b64_image(image_filename):
@@ -62,3 +65,16 @@ def radar_fig(colonnes):
 
     return radar
 
+# Function for confusion matrix
+def conf_matrix():
+    z = confusion_matrix(y_test, y_pred)
+    z = z.astype(int)
+    print(z)
+    x = ['pred_0', 'pred_1']
+    y = ['obs_0', 'obs_1']
+    z_text = [[str(y) for y in x] for x in z]
+    print(z_text)
+    fig = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=z_text, colorscale=[(0,"#FFC0CB"), (1,"hotpink")])
+    return fig
+
+conf_matrix()
