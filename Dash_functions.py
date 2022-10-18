@@ -49,7 +49,8 @@ def radar_fig(colonnes):
     first = list(dataG[colonnes].iloc[0])
     second = list(dataG[colonnes].iloc[1])
 
-    radar = go.Figure()
+    radar = go.Figure(layout=go.Layout(
+        title=go.layout.Title(text="Caractéristques des rencontres")))
 
     radar.add_trace(go.Scatterpolar(
         r=first,
@@ -75,6 +76,8 @@ def conf_matrix():
     z_text = [[str(y) for y in x] for x in z]
     print(z_text)
     fig = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=z_text, colorscale=[(0,"#FFC0CB"), (1,"hotpink")])
+    fig.update_layout(title_text='Matrice de confusion du modèle')
     return fig
 
 conf_matrix()
+

@@ -96,7 +96,7 @@ app.layout = html.Div([
 # Barplot reactive function
 def build_bar(column_chosen):
     df = dashF.interactive_bar(column_chosen)
-    fig = px.bar(df, x=column_chosen, y="Taux_match", color_discrete_sequence= ["#E0115F"])
+    fig = px.bar(df, x=column_chosen, y="Taux_match", color_discrete_sequence= ["#E0115F"], title="Exploration des données explicatives")
     return fig
 
 # Radar Callback
