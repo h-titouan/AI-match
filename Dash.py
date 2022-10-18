@@ -4,21 +4,22 @@
 from dash import Dash, html, dcc
 import plotly.express as px
 import pandas as pd
-from Nettoyage_donnees import model_ready, dataG
+from Chart_data import dataG
+from Nettoyage_donnees import model_ready
 from dash.dependencies import Input, Output
 import Dash_functions as dashF
 import plotly.graph_objects as go
 
 app = Dash(__name__)
 
-# Few usefull
+# Usefull datasets
 data = model_ready
 dataG = dataG
 colonnes = list(dataG.columns)
 
 # Image directory
-EasyDate = 'C:/Users/houde/PycharmProjects/pythonProject2/Easy Date/EasyDate.png'
-AI_match = 'C:/Users/houde/PycharmProjects/pythonProject2/Easy Date/AI_match.png'
+EasyDate = 'EasyDate.png'
+AI_match = 'AI_match.png'
 
 #Mise en place du html
 # ------------------------------------------------------------------------------

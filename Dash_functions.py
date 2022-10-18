@@ -1,5 +1,6 @@
 import base64
-from Nettoyage_donnees import model_ready, dataG
+from Nettoyage_donnees import model_ready
+from Chart_data import dataG
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
@@ -12,6 +13,8 @@ def b64_image(image_filename):
     return 'data:image/png;base64,' + base64.b64encode(image).decode('utf-8')
 
 data = model_ready
+
+# Function for interactive barplot
 def interactive_bar(column):
 
     df_m = data
@@ -37,7 +40,7 @@ def interactive_bar(column):
 
     return df
 
-
+# Function for interactive radar plot
 def radar_fig(colonnes):
 
     categories = list(colonnes)

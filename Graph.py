@@ -5,13 +5,13 @@ import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
 import base64
-from Chart_data import m_ad
+from Chart_data import m_ad, dataG
 from Nettoyage_donnees import model_ready
 app = Dash(__name__)
 
-#rearrangement du dataframe pour le plot
 
 df = m_ad
+dataG = dataG
 
 fig3 = px.pie(df, values='Taux_match', names='diff_age')
 fig3.update_layout(showlegend=False)
