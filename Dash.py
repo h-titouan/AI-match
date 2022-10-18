@@ -4,8 +4,7 @@
 from dash import Dash, html, dcc
 import plotly.express as px
 import pandas as pd
-from Chart_data import dataG
-from Nettoyage_donnees import model_ready
+from Nettoyage_donnees import model_ready, dataG
 from dash.dependencies import Input, Output
 import Dash_functions as dashF
 import plotly.graph_objects as go
@@ -32,6 +31,7 @@ app.layout = html.Div([
 
     # Create Multipage on App
     dcc.Tabs([
+        # Start Page 1
         dcc.Tab(label='Page 1', children=[
 
     # Columns Selector
@@ -41,8 +41,11 @@ app.layout = html.Div([
         style={'font-weight': 'bold', "text-align": "center"}),
 
         dcc.Dropdown(id='select_cols',
-            options = colonnes,
-            #options=[{'label': "Différence d'âge", 'value': colonnes[0]}],
+            options=[{'label': "Coefficient de match", 'value': colonnes[0],
+                      'label': "Sincérité partenaire", 'value': colonnes[1],
+                      'label': "Sincérité partenaire", 'value': colonnes[2],
+
+                      }],
             optionHeight=35,
             value= colonnes[0],               #dropdown value selected automatically when page loads
             multi=False,                        #allow multiple dropdown values to be selected
@@ -70,6 +73,7 @@ app.layout = html.Div([
 
         # Close Page 1
         ]),
+        # Start Page 2
         dcc.Tab(label='Page 2', children=[
 
         # Close Page 2

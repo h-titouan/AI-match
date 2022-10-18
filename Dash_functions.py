@@ -1,6 +1,5 @@
 import base64
-from Nettoyage_donnees import model_ready
-from Chart_data import dataG
+from Nettoyage_donnees import model_ready, dataG
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
