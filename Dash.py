@@ -17,8 +17,8 @@ dataG = dataG
 colonnes = list(dataG.columns)
 
 # Image directory
-EasyDate = 'EasyDate.png'
-AI_match = 'AI_match.png'
+EasyDate = 'Images/EasyDate.png'
+AI_match = 'Images/AI_match.png'
 
 #Mise en place du html
 # ------------------------------------------------------------------------------
