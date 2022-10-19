@@ -72,11 +72,9 @@ def radar_fig(colonnes):
 def conf_matrix():
     z = confusion_matrix(y_test, y_pred)
     z = z.astype(int)
-    print(z)
     x = ['pred_0', 'pred_1']
     y = ['obs_0', 'obs_1']
     z_text = [[str(y) for y in x] for x in z]
-    print(z_text)
     fig = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=z_text, colorscale=[(0,"#FFC0CB"), (1,"hotpink")])
     fig.update_layout(title_text='Matrice de confusion du modèle')
     return fig

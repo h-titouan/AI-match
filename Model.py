@@ -28,7 +28,6 @@ def preprocessing(data):
     X = data.drop("match", axis=1)
     y = data['match']
 
-    print(y.value_counts(normalize=True))
     return X, y
 
 X_train, y_train = preprocessing(X_train)
