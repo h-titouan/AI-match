@@ -71,7 +71,7 @@ def evaluation(model):
 evaluation(knn)
 
 # Ouvrir les données submission
-submission = pd.read_csv("submissions.csv", sep = ";", on_bad_lines='skip')
+submission = pd.read_csv("data/submissions.csv", sep = ";", on_bad_lines='skip')
 iid_pid = submission.iid_pid
 
 def submission_process(data):

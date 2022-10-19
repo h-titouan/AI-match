@@ -3,7 +3,7 @@
 import pandas as pd
 import numpy as np
 
-data = pd.read_csv("train.csv", sep = ";")
+data = pd.read_csv("data/train.csv", sep = ";")
 
 # Fonction de nettoyage et de création des nouvelles variables
 def exploratory_process(data):
