@@ -24,7 +24,7 @@ bar_cols = list(data.columns)
 # Image directory
 EasyDate = 'Images/EasyDate.png'
 AI_match = 'Images/AI_match.png'
-validation = 'Images/validation.png'
+validation = 'Images/validation.PNG'
 
 #Mise en place du html
 # ------------------------------------------------------------------------------
