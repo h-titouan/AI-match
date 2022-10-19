@@ -3,7 +3,9 @@ School project
 
 ## Cadre du projet
 
-Dans un cadre des cours de programmation Python du Master 2 SISE (Statistiques et informatique pour la science des données) de l’université Lyon 2 lumière il nous est demandé de construire un modèle prédictif performant permettant de comprendre l’influence des variables à partir d’un jeu de données mais aussi de créer une application Dash, hébergée sur Heroku. De plus nous devions afin d’assurer la pérennité du projet concevoir une documentation technique et fonctionnelle. Ce travail à été réalisé en 21 jours par groupe de 3 étudiants.
+Dans un cadre des cours de programmation Python du Master 2 SISE (Statistiques et informatique pour la science des données) de l’université Lyon 2 lumière il nous est demandé de construire un modèle prédictif performant permettant de comprendre l’influence des variables à partir d’un jeu de données mais aussi de créer une application Dash, hébergée sur Heroku. De plus nous devions afin d’assurer la pérennité du projet concevoir une documentation technique et fonctionnelle.
+
+Ce travail à été réalisé en 21 jours par groupe de 3 étudiants.
 
 ## Concept du projet
 
