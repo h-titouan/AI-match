@@ -31,3 +31,17 @@ Publication sur le web :
 ## Lien de l'application
 
 https://easydate-match.herokuapp.com/
+
+## Repository
+
+L'application se découpe en 2 parties :
+
+ - La partie Machine Learning :
+   2 fichiers .py s'occupent de cette partie, le premier Nettoyage_Donnee.py qui s'occupent de nettoyer les données brutes.
+   Le second Model.py s'occupe de la création du modèle créé pour la prédiction (utilisation KNN).
+   
+ - La partie Application :
+   2 fichiers .py s'occupent de cette partie, le premier Dash_function.py permet de créer les fonctions et les variables utilisées pour l'application et les graphiques.
+   Le second easymatch.py est le main pour l'application DASH du reporting.
+   
+Il existe 3 dossiers qui stockent les images et les données utilisées ainsi que les docs.
