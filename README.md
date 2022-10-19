@@ -27,3 +27,7 @@ Application :
 Publication sur le web :
 
  - Heroku
+
+## Lien de l'application
+
+https://easydate-match.herokuapp.com/
