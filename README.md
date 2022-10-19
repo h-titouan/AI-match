@@ -1,5 +1,5 @@
 # Easy Date
-School project
+Projet Universitaire
 
 ## Cadre du projet
 
