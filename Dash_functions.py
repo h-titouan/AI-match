@@ -1,3 +1,4 @@
+#Import des librairies
 import base64
 from Nettoyage_donnees import model_ready, dataG
 import pandas as pd
@@ -14,6 +15,7 @@ def b64_image(image_filename):
 
     return 'data:image/png;base64,' + base64.b64encode(image).decode('utf-8')
 
+#Import des données nettoyé
 data = model_ready
 
 # Function for interactive barplot
@@ -79,8 +81,7 @@ def conf_matrix():
     fig.update_layout(title_text='Matrice de confusion du modèle')
     return fig
 
-conf_matrix()
-
+#Function for ineractive pie chart
 def interactive_pie(column):
 
     df_m = data
