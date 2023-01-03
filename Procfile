@@ -1,1 +1,1 @@
-web: gunicorn easydate:server
+web: gunicorn app:server
