@@ -55,10 +55,10 @@ def evaluation(model):
     model.fit(X_train, y_train)
     ypred = model.predict(X_test)
 
-    print(pd.DataFrame(confusion_matrix(y_test, ypred),
-                       columns=['pred_0', 'pred_1'],
-                       index=['obs_0', 'obs_1']))
-    print(classification_report(y_test, ypred))
+    #print(pd.DataFrame(confusion_matrix(y_test, ypred),
+    #                   columns=['pred_0', 'pred_1'],
+    #                   index=['obs_0', 'obs_1']))
+    #print(classification_report(y_test, ypred))
 
     N, train_score, val_score = learning_curve(model, X_train, y_train,
                                                cv=5, scoring="f1", train_sizes=np.linspace(0.1, 1, 10))
