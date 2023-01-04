@@ -26,7 +26,7 @@ Application :
 
 Publication sur le web :
 
- - Heroku
+ - Render
 
 ## Lien de l'application
 
