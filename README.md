@@ -30,7 +30,7 @@ Publication sur le web :
 
 ## Lien de l'application
 
-https://easydate-match.herokuapp.com/
+https://ai-match.onrender.com/
 
 ## Repository
 
